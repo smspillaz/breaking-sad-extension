@@ -40,3 +40,8 @@ observer.observe(document.querySelector('body'), {
   childList: true,
   subtree: true
 });
+
+// Query selectors in the document that we have now
+document.querySelectorAll('div').filter(s => s.id.startsWith("hyperfeed_story_id_")).forEach(s =>
+  s => console.log("Detected story ", storyTextContents(s), sentiment(storyTextContents(s)))
+);
