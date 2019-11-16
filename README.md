@@ -6,3 +6,4 @@ This is an extension that selectively rebalances social feeds for overall mental
 
 For example:
 
+![Screenshot](screenshots/googlestore.png)
