@@ -8,32 +8,37 @@ const Container = styled.div`
   width: 300px;
 `
 // unrealistic image, negative news, polarized content
-const View = () => {
-  const relisticImageStr = localStorage.getItem('relisticImageSetting') ? Number(localStorage.getItem('relisticImageSetting')) : 5; 
-  const negativeNewsStr = localStorage.getItem('negativeNewsSetting') ? Number(localStorage.getItem('negativeNewsSetting')) : 5;  
-  const polarizedContentStr = localStorage.getItem('polarizedContentSetting') ? Number(localStorage.getItem('polarizedContentSetting')) : 5;  
-  const keywordsSettingStr = localStorage.getItem('keywordsSettingSetting') ? localStorage.getItem('keywordsSettingSetting') : "";  
-  
-  const [unrealisticImageSetting, setUnrealisticImageSetting] = React.useState(relisticImageStr);
-  const [negativeNewsSetting, setNegativeNewsSetting] = React.useState(negativeNewsStr);
-  const [polarizedContentSetting, setPolarizedContentSetting] = React.useState(polarizedContentStr);
-  const [keywordsSetting, setKeywordsSetting] = React.useState(keywordsSettingStr);
+const View = ({
+  onUnrealisticImagesSettingChange,
+  onNegativeNewsSettingChange,
+  onPolarizedContentSettingChange,
+  onKeywordSettingChange,
+  initialUnrealisticImageSetting,
+  initialNegativeNewsSetting,
+  initialPolarizedContentSetting,
+  initialKeywordsSetting
+}) => {
+
+  const [unrealisticImageSetting, setUnrealisticImageSetting] = React.useState(initialUnrealisticImageSetting);
+  const [negativeNewsSetting, setNegativeNewsSetting] = React.useState(initialNegativeNewsSetting);
+  const [polarizedContentSetting, setPolarizedContentSetting] = React.useState(initialPolarizedContentSetting);
+  const [keywordsSetting, setKeywordsSetting] = React.useState(initialKeywordsSetting);
 
   function handleUnrealisticSettingChange(value) {
     setUnrealisticImageSetting(Number(value))
-    localStorage.setItem("relisticImageSetting", value)
+    onUnrealisticImagesSettingChange(Number(value))
   }
   function handleNegativeNewsSettingChange(value) {
     setNegativeNewsSetting(Number(value))
-    localStorage.setItem("negativeNewsSetting", value)
+    onNegativeNewsSettingChange(Number(value))
   }
   function handlePolarizedContentSettingChange(value) {
     setPolarizedContentSetting(Number(value))
-    localStorage.setItem("polarizedContentSetting", value)
+    onPolarizedContentSettingChange(Number(value))
   }
   function handleKeywordsSettingChange(event) {
     setKeywordsSetting(event.target.value)
-    localStorage.setItem("keywordsSettingSetting", event.target.value)
+    onKeywordSettingChange(event.target.value)
   }
   return (
     <Container>
