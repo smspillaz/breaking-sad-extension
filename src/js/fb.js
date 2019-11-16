@@ -57,12 +57,15 @@ const reportAndMaybeHideStory = (node) => {
   if (normalizedScore <= 0) {
     console.log("Detected story, not blocking ", text, normalizedScore);
 
-    if (Math.random() < (settings.negativeNewsSetting / 10)) {
-      console.log("Detected story, blocking ", text, normalizedScore);
+    const threshold = (settings.negativeNewsSetting / 10);
+    const rv = Math.random();
+
+    if (rv > threshold) {
+      console.log("Detected story, blocking ", threshold, rv, text, normalizedScore);
       doFilter(node);
       return;
     } else {
-      console.log("Detected story, not blocking ", text, normalizedScore);
+      console.log("Detected story, not blocking ", threshold, rv, text, normalizedScore);
     }
   }
 
