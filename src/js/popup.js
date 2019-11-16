@@ -6,7 +6,7 @@ import { render } from "react-dom";
 const getLocalStorageOrDefault = (setting, defaultValue) => {
   const ls = localStorage.getItem(setting);
 
-  return ls !== null ? Number(ls) : defaultValue;
+  return ls !== null ? ls : defaultValue;
 }
 
 const sendSettingUpdateToContentScript = (settingName, value) => {
