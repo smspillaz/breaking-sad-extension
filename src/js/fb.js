@@ -8,6 +8,24 @@ const storyTextContents = node => (
   ).join(' ')
 );
 
+const reportAndMaybeHideStory = (node) => {
+  const text = storyTextContents(node);
+  const { normalizedScore }  = sentiment(text);
+
+  if (normalizedScore >= 0) {
+    console.log("Detected story, not blocking ", text, normalizedScore);
+    return;
+  }
+
+  if (Math.random() < 0.5) {
+    console.log("Detected story, blocking ", text, normalizedScore);
+    node.style.filter = 'blur(15px)';
+    node.style.opacity = 0.2;
+  } else {
+    console.log("Detected story, not blocking ", text, normalizedScore);
+  }
+}
+
 const processMutation = (m) => {
   const values = [].slice.call(m.addedNodes);
 
@@ -27,7 +45,7 @@ const processMutation = (m) => {
     ).filter(
       s => s.id.startsWith("hyperfeed_story_id_")
     ).forEach(
-      s => console.log("Detected story ", storyTextContents(s), sentiment(storyTextContents(s)))
+      s => reportAndMaybeHideStory(s)
     );
   }, 1500));
 };
@@ -42,6 +60,6 @@ observer.observe(document.querySelector('body'), {
 });
 
 // Query selectors in the document that we have now
-document.querySelectorAll('div').filter(s => s.id.startsWith("hyperfeed_story_id_")).forEach(s =>
-  s => console.log("Detected story ", storyTextContents(s), sentiment(storyTextContents(s)))
+[].slice.call(document.querySelectorAll('div')).filter(s => s.id.startsWith("hyperfeed_story_id_")).forEach(s =>
+  s => reportAndMaybeHideStory(s)
 );
