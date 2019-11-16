@@ -74,8 +74,8 @@ function settingsFromDAASValues(anxiety, depression, stress) {
 
 const initialNegativeNewsSetting = Number(getLocalStorageOrDefault('negativeNewsSetting', 5));
 const initialUnrealisticImageSetting = Number(getLocalStorageOrDefault('unrealisticImageSetting', 5));
-const initialPolarizedContentSetting = Number(getLocalStorageOrDefault('polarizedContentSetting'));
-const initialKeywordsSetting = getLocalStorageOrDefault('keywordSettingSetting', []);
+const initialPolarizedContentSetting = Number(getLocalStorageOrDefault('polarizedContentSetting', 5));
+const initialKeywordsSetting = getLocalStorageOrDefault('keywordsSetting', '');
 const initialDepressionSetting = Number(getLocalStorageOrDefault('depressionSetting', 21));
 const initialAnxietySetting = Number(getLocalStorageOrDefault('anxietySetting', 16));
 const initialStressSetting = Number(getLocalStorageOrDefault('stressSetting', 21));
