@@ -1,5 +1,5 @@
 import "../css/popup.css";
-import View from "./popup/greeting_component.jsx";
+import View from "./popup/View.jsx";
 import React from "react";
 import { render } from "react-dom";
 

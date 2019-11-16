@@ -1,5 +1,6 @@
 import React from "react";
 import { Input } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 import { hot } from "react-hot-loader";
 import { Slider } from "material-ui-slider";
 // import styles from "./View.modules.css";
@@ -8,7 +9,7 @@ const Container = styled.div`
   width: 300px;
 `
 // unrealistic image, negative news, polarized content
-const View = ({
+const Setting = ({
   onUnrealisticImagesSettingChange,
   onNegativeNewsSettingChange,
   onPolarizedContentSettingChange,
@@ -22,7 +23,8 @@ const View = ({
   keywordsSetting,
   depressionSetting,
   anxietySetting,
-  stressSetting
+  stressSetting,
+  toggleShowQuestionnaire
 }) => {
   return (
     <Container>
@@ -47,18 +49,19 @@ const View = ({
       </div>
       <div>
         {'Depression '}
-        <Input id="depression" value={depressionSetting} onChange={onDepressionChange}/>
+        <Input id="depression" value={depressionSetting} onChange={e => onDepressionChange(e.target.value)}/>
       </div>
       <div>
         {'Anxiety '}
-        <Input id="anxiety" value={anxietySetting} onChange={onAnxietyChange}/>
+        <Input id="anxiety" value={anxietySetting} onChange={e => onAnxietyChange(e.target.value)}/>
       </div>
       <div>
         {'Stress '}
-        <Input id="stress" value={stressSetting} onChange={onStressChange}/>
+        <Input id="stress" value={stressSetting} onChange={e => onStressChange(e.target.value)}/>
       </div>
+      <Button onClick={toggleShowQuestionnaire} >Questionnaire</Button>
     </Container>
   );
 };
 
-export default hot(module)(View)
+export default hot(module)(Setting)
