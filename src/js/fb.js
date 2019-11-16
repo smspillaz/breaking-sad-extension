@@ -1,0 +1,1 @@
+alert('You are on FACEBOOK. Stop. its bad');

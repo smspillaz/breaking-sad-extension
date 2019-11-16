@@ -23,7 +23,8 @@ var options = {
   entry: {
     popup: path.join(__dirname, "src", "js", "popup.js"),
     options: path.join(__dirname, "src", "js", "options.js"),
-    background: path.join(__dirname, "src", "js", "background.js")
+    background: path.join(__dirname, "src", "js", "background.js"),
+    fb: path.join(__dirname, "src", "js", "fb.js")
   },
   output: {
     path: path.join(__dirname, "build"),
@@ -66,10 +67,17 @@ var options = {
       from: "src/manifest.json",
       transform: function (content, path) {
         // generates the manifest file using the package.json informations
+        parsed = JSON.parse(content.toString());
         return Buffer.from(JSON.stringify({
           description: process.env.npm_package_description,
           version: process.env.npm_package_version,
-          ...JSON.parse(content.toString())
+          ...parsed,
+          content_scripts: parsed.content_scripts.map(
+            s => ({
+              ...s,
+              js: s.js.map(j => j.split(".").slice(0, -1).concat(["bundle.js"]).join("."))
+            })
+          )
         }))
       }
     }]),
