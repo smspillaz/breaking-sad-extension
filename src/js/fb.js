@@ -12,7 +12,6 @@ const settings = {
 /* Listen for changes in settings */
 chrome.runtime.onMessage.addListener(
   (message, sender, sendResponse) => {
-    console.log('Got message', message);
     switch(message.type) {
       case "setting":
         settings[message.data.name] = message.data.value;
