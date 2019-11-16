@@ -1,9 +1,9 @@
 import "../css/popup.css";
-import Greeting from "./popup/greeting_component.jsx";
+import View from "./popup/greeting_component.jsx";
 import React from "react";
 import { render } from "react-dom";
 
 render(
-  <Greeting/>,
+  <View/>,
   window.document.getElementById("app-container")
 );

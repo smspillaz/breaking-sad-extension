@@ -7,8 +7,14 @@
     "start": "node utils/webserver.js"
   },
   "dependencies": {
+    "@material-ui/core": "^3.9.3",
+    "@types/react": "^15.6.28",
+    "css-loader": "^3.2.0",
+    "material-ui-slider": "^3.0.8",
     "react": "^16.7.0",
-    "react-dom": "^16.7.0"
+    "react-css-modules": "^4.7.11",
+    "react-dom": "^16.7.0",
+    "styled-components": "^4.4.1"
   },
   "devDependencies": {
     "@babel/core": "^7.1.5",
@@ -16,7 +22,6 @@
     "babel-loader": "8.0.5",
     "clean-webpack-plugin": "^1.0.0",
     "copy-webpack-plugin": "^4.6.0",
-    "css-loader": "2.1.0",
     "file-loader": "3.0.1",
     "fs-extra": "7.0.1",
     "html-loader": "0.5.5",
