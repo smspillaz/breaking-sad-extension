@@ -2,9 +2,11 @@
 
 import sentiment from 'wink-sentiment';
 
-const POST_SELECTOR = '//div[@data-testid="fbfeed_story"]';
-
-const storyTextContents = node => [].slice.call(node.querySelectorAll("p")).map(e => e.innerText).join(' ');
+const storyTextContents = node => (
+  [].slice.call(node.querySelectorAll("p")).map(e => e.innerText).concat(
+    [].slice.call(node.querySelectorAll("._3n1k")).map(e => e.innerText)
+  ).join(' ')
+);
 
 const processMutation = (m) => {
   const values = [].slice.call(m.addedNodes);
