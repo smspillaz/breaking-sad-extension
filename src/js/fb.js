@@ -6,7 +6,7 @@ const settings = {
   negativeNewsSetting: 5,
   unrealisticImagesSetting: 5,
   polarizedContentSetting: 5,
-  keywordsSetting: []
+  keywordsSetting: ''
 };
 
 /* Listen for changes in settings */
@@ -47,9 +47,11 @@ const reportAndMaybeHideStory = (node) => {
   const text = storyTextContents(node);
   const normalizedText = text.toLowerCase();
   const { normalizedScore }  = sentiment(text);
+  const keywords = settings.keywordsSetting.trim().split(',').map(k => k.toLowerCase()).filter(s => s);
+  const remainingKeywords = keywords.filter(s => normalizedText.indexOf(s) !== -1);
 
-  if (settings.keywordsSetting.filter(s => normalizedText.indexOf(s) !== -1).length > 0) {
-    console.log('Blocking due to keyword ', settings.keywordsSetting.filter(s => text.indexOf(s) !== -1));
+  if (remainingKeywords.length > 0) {
+    console.log('Blocking due to keyword ', remainingKeywords);
     doFilter(node);
     return;
   }
