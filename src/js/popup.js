@@ -154,14 +154,14 @@ const ToplevelSettingsView = () => {
   function handleKeywordsSettingChange(event) {
     setKeywordsSetting(event.target.value.split(',').map(k => k.toLowerCase()).filter(s => s))
   }
-  function handleDepressionChange(event) {
-    setDepressionSetting(Number(event.target.value))
+  function handleDepressionChange(value) {
+    setDepressionSetting(Number(value))
   }
-  function handleAnxietyChange(event) {
-    setAnxietySetting(Number(event.target.value));
+  function handleAnxietyChange(value) {
+    setAnxietySetting(Number(value));
   }
-  function handleStressChange(event) {
-    setStressSetting(Number(event.target.value));
+  function handleStressChange(value) {
+    setStressSetting(Number(value));
   }
 
   return (
