@@ -32,11 +32,7 @@ const tempResult = {}
 for (var i = 1; i <= 21 ; i++) {
     tempResult[String(i)] = 0;
 }
-const DASresult = {
-    "S": 0,
-    "D": 0,
-    "A": 0
-}
+
 const resultsMapping = {
     1: "S", 2: "A", 3: "D", 4: "A", 5: "D", 6: "S", 7: "A", 8: "S", 9: "A", 10: "D", 11: "S", 12: "S", 13: "D", 14: "S", 15: "A", 16: "D", 17: "D", 18: "S", 19: "A", 20: "A", 21: "D"
 }
@@ -61,10 +57,16 @@ const MultipleChoiceQuestion = ({question, questionNo}) => {
 }
 
 const Questionnaire = ({ onDepressionChange, onAnxietyChange, onStressChange, toggleShowQuestionnaire }) => {
+    const DASresult = {
+        "S": 0,
+        "D": 0,
+        "A": 0
+    }
+
     const [results, setResults] = React.useState({});
     function handleSetResult () {
         setResults(tempResult)
-        Object.keys(tempResult).forEach(ele => DASresult[resultsMapping[ele]] += Number(tempResult[ele]))
+        Object.keys(tempResult).forEach(ele => DASresult[resultsMapping[ele]] += Number(tempResult[ele])*2)
         onDepressionChange(DASresult.D);
         onAnxietyChange(DASresult.A);
         onStressChange(DASresult.S);
