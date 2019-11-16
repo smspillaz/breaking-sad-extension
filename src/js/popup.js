@@ -152,7 +152,7 @@ const ToplevelSettingsView = () => {
     setPolarizedContentSetting(Number(value))
   }
   function handleKeywordsSettingChange(event) {
-    setKeywordsSetting(event.target.value.split(',').map(k => k.toLowerCase()).filter(s => s))
+    setKeywordsSetting(event.target.value)
   }
   function handleDepressionChange(value) {
     setDepressionSetting(Number(value))
