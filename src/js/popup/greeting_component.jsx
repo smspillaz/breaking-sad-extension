@@ -13,33 +13,17 @@ const View = ({
   onNegativeNewsSettingChange,
   onPolarizedContentSettingChange,
   onKeywordSettingChange,
-  initialUnrealisticImageSetting,
-  initialNegativeNewsSetting,
-  initialPolarizedContentSetting,
-  initialKeywordsSetting
+  onDepressionChange,
+  onAnxietyChange,
+  onStressChange,
+  unrealisticImageSetting,
+  negativeNewsSetting,
+  polarizedContentSetting,
+  keywordsSetting,
+  depressionSetting,
+  anxietySetting,
+  stressSetting
 }) => {
-
-  const [unrealisticImageSetting, setUnrealisticImageSetting] = React.useState(initialUnrealisticImageSetting);
-  const [negativeNewsSetting, setNegativeNewsSetting] = React.useState(initialNegativeNewsSetting);
-  const [polarizedContentSetting, setPolarizedContentSetting] = React.useState(initialPolarizedContentSetting);
-  const [keywordsSetting, setKeywordsSetting] = React.useState(initialKeywordsSetting);
-
-  function handleUnrealisticSettingChange(value) {
-    setUnrealisticImageSetting(Number(value))
-    onUnrealisticImagesSettingChange(Number(value))
-  }
-  function handleNegativeNewsSettingChange(value) {
-    setNegativeNewsSetting(Number(value))
-    onNegativeNewsSettingChange(Number(value))
-  }
-  function handlePolarizedContentSettingChange(value) {
-    setPolarizedContentSetting(Number(value))
-    onPolarizedContentSettingChange(Number(value))
-  }
-  function handleKeywordsSettingChange(event) {
-    setKeywordsSetting(event.target.value.split(',').map(k => k.toLowerCase()).filter(s => s))
-    onKeywordSettingChange(event.target.value.split(',').map(k => k.toLowerCase()).filter(s => s))
-  }
   return (
     <Container>
       <p>HACK THE SAD WITH THE BAD ITS NOT A FACEBOOK AD</p>
@@ -47,19 +31,31 @@ const View = ({
       {/* <img src={icon} /> */}
       <div>
         Unrealistic Images: {unrealisticImageSetting}
-        <Slider min={1} max={10} value={unrealisticImageSetting} onChange={handleUnrealisticSettingChange}/>
+        <Slider min={1} max={10} value={unrealisticImageSetting} onChange={onUnrealisticImagesSettingChange}/>
       </div>
       <div>
         Negative News: {negativeNewsSetting}
-        <Slider min={1} max={10} value={negativeNewsSetting} onChange={handleNegativeNewsSettingChange}/>
+        <Slider min={1} max={10} value={negativeNewsSetting} onChange={onNegativeNewsSettingChange}/>
       </div>
       <div>
         Polarized Content: {polarizedContentSetting}
-        <Slider min={1} max={10} value={polarizedContentSetting} onChange={handlePolarizedContentSettingChange}/>
+        <Slider min={1} max={10} value={polarizedContentSetting} onChange={onPolarizedContentSettingChange}/>
       </div>
       <div>
         Filtered keywords (seperate by comma ","): 
-        <Input id="keyword" value={keywordsSetting} onChange={handleKeywordsSettingChange}/>
+        <Input id="keyword" value={keywordsSetting} onChange={onKeywordSettingChange}/>
+      </div>
+      <div>
+        {'Depression '}
+        <Input id="depression" value={depressionSetting} onChange={onDepressionChange}/>
+      </div>
+      <div>
+        {'Anxiety '}
+        <Input id="anxiety" value={anxietySetting} onChange={onAnxietyChange}/>
+      </div>
+      <div>
+        {'Stress '}
+        <Input id="stress" value={stressSetting} onChange={onStressChange}/>
       </div>
     </Container>
   );
