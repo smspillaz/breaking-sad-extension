@@ -37,8 +37,8 @@ const View = ({
     onPolarizedContentSettingChange(Number(value))
   }
   function handleKeywordsSettingChange(event) {
-    setKeywordsSetting(event.target.value)
-    onKeywordSettingChange(event.target.value)
+    setKeywordsSetting(event.target.value.split(',').map(k => k.toLowerCase()).filter(s => s))
+    onKeywordSettingChange(event.target.value.split(',').map(k => k.toLowerCase()).filter(s => s))
   }
   return (
     <Container>
