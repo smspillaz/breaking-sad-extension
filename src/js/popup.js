@@ -123,7 +123,7 @@ const ToplevelSettingsView = () => {
     sendSettingUpdateToContentScript("polarizedContentSetting", polarizedContentSetting);
   });
   const [keywordsSetting, setKeywordsSetting] = useStateWithCallback(initialKeywordsSetting, () => {
-    localStorage.setItem("keywordsSettingSetting", keywordsSetting);
+    localStorage.setItem("keywordsSetting", keywordsSetting);
     sendSettingUpdateToContentScript("keywordsSetting", keywordsSetting);
   });
   const [depressionSetting, setDepressionSetting] = useStateWithCallback(initialDepressionSetting, () => {
